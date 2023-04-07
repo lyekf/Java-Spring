@@ -1,0 +1,64 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <!-- Definition for textEditor bean -->
+   <bean id = "textEditor" class = "com.spring.TextEditor">
+      <property name = "spellChecker" ref = "spellChecker"/>
+   </bean>
+
+   <!-- Definition for spellChecker bean -->
+   <bean id = "spellChecker" class = "com.spring.SpellChecker"></bean>
+
+</beans>
+
+
+<!-- 
+If you have many setter methods, then it is convenient to use p-namespace in the XML configuration file. 
+Let us check the difference −
+
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id = "john-classic" class = "com.example.Person">
+      <property name = "name" value = "John Doe"/>
+      <property name = "spouse" ref = "jane"/>
+   </bean>
+
+   <bean name = "jane" class = "com.example.Person">
+      <property name = "name" value = "John Doe"/>
+   </bean>
+
+</beans>
+
+
+***************Using p-namespace to rewrite above
+
+
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:p = "http://www.springframework.org/schema/p"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id = "john-classic" class = "com.example.Person"
+      p:name = "John Doe"
+      p:spouse-ref = "jane"/>
+   </bean>
+
+   <bean name =" jane" class = "com.example.Person"
+      p:name = "John Doe"/>
+   </bean>
+
+</beans>
+
+ -->
